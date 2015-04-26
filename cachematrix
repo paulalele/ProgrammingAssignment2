@@ -1,18 +1,19 @@
 Enter file contents here
+##function creates a special "matrix" object that can cache its inverse
 makeCacheMatrix <- function(x = matrix()) {
-m<-TRUE
+m<-TRUE ## argument that this is a matrix
 set<-function(y){
   x<<-y
   m<<-TRUE
   }
 get<-function()x
 setinverse<-function(inverse) m<<-inverse
-getinverse<-function() m
+getinverse<-function() m ##cache the inverse of the matrix
 list(set=set, get=get,
      setinverse=setinverse,
      getinverse=getinverse)
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...) { ##function computes the inverse of the special matrix returned by the above function
         ## Return a matrix that is the inverse of 'x'
   m<-x$getinverse()
   if(!is.true(m))){
